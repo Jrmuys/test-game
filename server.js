@@ -43,7 +43,7 @@ io.on('connection', function (socket) {
         console.log('user disconnected: ', socket.id);
         delete players[socket.id];
         // emit a message to all players to remove this player
-        io.emit('disconnect', socket.id);
+        // io.emit('disconnect', socket.id);
     });
 
     // when a player moves, update the player data
@@ -68,6 +68,8 @@ io.on('connection', function (socket) {
     });
 });
 
-server.listen(8081, function () {
-    console.log(`Listening on ${server.address().port}`);
+const PORT = process.env.PORT || 8081;
+
+server.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`);
 });
